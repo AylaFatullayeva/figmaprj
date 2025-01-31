@@ -1,0 +1,242 @@
+@use "variables";
+@use "mixins";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    width:100vw;
+    background-color:variables.$base-color;
+    @include mixins.flex-center;
+    nav{
+        width: 80%;
+        .top, .bottom{
+    @include mixins.flex-between;
+        }
+        .top{
+            padding-bottom: 20px;
+            padding-top:15px;
+            border-bottom: 1px solid rgb(199, 194, 194);
+            h3{
+                margin-left: 200px;
+            }
+            a{
+                text-decoration: none;
+                color:black;
+                font-size: variables.$header-top-size;
+                font-weight: variables.$font-weight-1;
+                font-family: variables.$base-font;
+            }
+        }
+        .bottom{
+            padding-top:25px;
+            a{
+                text-decoration: none;
+                color:black; 
+                font-size: variables.$product-category;
+                font-weight: variables.$font-weight-1;
+                font-family: variables.$secondary-font;
+            }
+        }
+    }
+}
+.page-1{
+    width: 100vw;
+    padding: 40px 10%;
+    background-color: variables.$base-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        font-size: variables.$heading-size;
+        font-weight: variables.$font-weight-2;
+        font-family: variables.$base-font;
+        margin-bottom: 20px;
+    }
+    p{
+        font-size: variables.$header-top-size;
+        font-weight: variables.$font-weight-1;
+        font-family: variables.$base-font;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+    button{
+        background-color: variables.$color-2;
+        color: #FFFFFF;
+        font-size: variables.$button-font-size;
+        font-weight: variables.$font-weight-1;
+        font-family: variables.$base-font;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+    }
+    img{
+    max-width: 40%;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 85% 100%, 0% 100%);
+    }
+}
+.logos{
+    width:100vw;
+    @include mixins.flex-center;
+    padding-top:25px;
+}
+.page-2 {
+    @include mixins.flex-center;
+    width: 100vw;
+    margin: 20px;
+  }
+  
+  .sidebar {
+    // writing-mode: vertical-rl;
+    // text-orientation:sideways-right;
+    transform: rotate(-90deg);
+    font-family: variables.$base-font;
+    font-size: variables.$hot-category-size;
+    font-weight: variables.$font-weight-1;
+    padding: 10px 20px;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    width: 100vw;
+    padding: 10px;
+  }
+  
+  .large-image {
+    grid-row: span 2;
+  }
+  
+  .large-image img,
+  .grid-item img {
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .grid-item {
+    position: relative;
+  }
+  
+  .sale .sale-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: variables.$color-2;
+    color: white;
+    padding: 5px 10px;
+    font-size: variables.$product-category;
+    font-weight: variables.$font-weight-4;
+    border-radius: 3px;
+  }
+  .page-3{
+    h1{
+    font-size: variables.$grid-products-title;
+    @include mixins.flex-center;
+    padding-top: 30px;
+    font-weight: variables.$font-weight-3;
+    font-family: variables.$base-font;
+  }
+  nav.categories{
+    margin-top: 10px;
+    @include mixins.flex-between;
+    
+    button{
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      justify-content: end;
+    }
+  }
+  .links {
+    @include mixins.flex-left;
+    padding: 10px 0;
+    p {
+        padding: 10px 15px;
+        margin: 0 5px;
+        font-size: variables.$header-bottom-size;
+        color:variables.$color-4;
+    }
+  }
+  .product-grid {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+  
+    
+    
+    .product-card {
+      text-align: center;
+      padding: 15px;
+  
+      img {
+        max-width: 100%;
+        border-radius: 10px;
+      }
+      .white-background-text{
+background-color: white;
+      h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+  
+      .category {
+        font-size: 14px;
+        @include mixins.flex-left;
+        color:variables.$color-4;
+      }
+  
+      .price {
+        font-size: variables.$header-bottom-size;
+        font-weight: variables.$font-weight-4;
+  
+        .original-price {
+          text-decoration: line-through;
+          color: variables.$color-4;
+          margin-right: 5px;
+        }
+      }
+  
+      &.hot {
+        color: variables.$color-3;
+        position: relative;
+  
+        &:before {
+          content: "HOT";
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background-color: variables.$color-3;
+          color: white;
+          font-size: 12px;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      }
+  
+      &.sale {
+        position: relative;
+  
+        &:before {
+          content: "SALE";
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background-color: #007BFF;
+          color: white;
+          font-size: 12px;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+  }
